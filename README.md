@@ -1,6 +1,8 @@
 # outsidehereOS
 
-A Hyprland rice with an Apple Liquid Glass look. The shell is a Quickshell config built around a dynamic island. It started as a fork of end4's illogical-impulse; the end4 panels are gone.
+A Beautiful Custom Hyprland Shell based loosely out of end4 and follows the apple design language (for the most part).
+
+The shell is a Quickshell config built around a dynamic island. It started as a fork of end4's illogical-impulse; the end4 panels are gone. Licensed GPL-3.0, like end4.
 
 ## What's in it
 - **Island** (`config/quickshell/outsidehereOS/modules/ii/island`): workspaces, clock, media, notifications (banner or ticker), volume/brightness levels and a keystroke overlay.
