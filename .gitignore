@@ -1,0 +1,7 @@
+# Runtime state: python venv, todo list, AI chats, generated colours
+state/
+# Root-owned copies of the original boot files, made by extras/boot/install.sh
+extras/boot/backup/
+__pycache__/
+*.pyc
+.qmlls.ini

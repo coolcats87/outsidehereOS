@@ -1,0 +1,9 @@
+# riceswitch manifest for 'outsidehereOS' (written by 'riceswitch import' 2026-11-13T16:23:01+05:30)
+launch_cmd=start-hyprland
+config hypr
+config quickshell/outsidehereOS
+config fuzzel
+config wlogout
+config matugen
+config outsidehereOS
+state quickshell
