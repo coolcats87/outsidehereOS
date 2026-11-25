@@ -203,6 +203,7 @@ This removes the links and puts your old configs back. Packages, wallpapers and 
 - [end-4/dots-hyprland](https://github.com/end-4/dots-hyprland) (illogical-impulse): the original shell this grew out of.
 - [Quickshell](https://quickshell.org) and [Hyprland](https://hyprland.org).
 - Design inspired by Apple's Liquid Glass. outsidehereOS isn't affiliated with Apple, and none of Apple's assets are used.
+- Claude was used to clean up my messy code and code structure, aiding with the projects cosmetic look, and general cleaning up and smoothening up. The code for the most part is mine
 
 
 Have fun!!
