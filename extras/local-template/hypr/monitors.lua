@@ -1,0 +1,9 @@
+-- Monitors. Without a rule Hyprland uses each screen's preferred mode at scale 1.
+-- List your outputs with:  hyprctl monitors all
+-- Example (uncomment and edit):
+-- hl.monitor({
+--     output = "eDP-1",
+--     mode = "1920x1080@144",
+--     position = "0x0",
+--     scale = 1
+-- })

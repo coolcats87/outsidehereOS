@@ -13,14 +13,14 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 import Quickshell.Hyprland
-import qs.modules.ii.wallpaper
-import qs.modules.ii.wallpaperPicker
-import qs.modules.ii.island
-import qs.modules.ii.lock
-import qs.modules.ii.overlay
-import qs.modules.ii.polkit
-import qs.modules.ii.regionSelector
-import qs.modules.ii.screenCorners
+import qs.modules.shell.wallpaper
+import qs.modules.shell.wallpaperPicker
+import qs.modules.shell.island
+import qs.modules.shell.lock
+import qs.modules.shell.overlay
+import qs.modules.shell.polkit
+import qs.modules.shell.regionSelector
+import qs.modules.shell.screenCorners
 
 ShellRoot {
     id: root

@@ -43,16 +43,16 @@ Singleton {
 
     function poweroff() {
         closeAllWindows();
-        Quickshell.execDetached(["bash", "-c", `$HOME/.local/share/glass-boot/quiet-power.sh poweroff || systemctl poweroff || loginctl poweroff`]);
+        Quickshell.execDetached(["bash", "-c", `${Directories.scriptPath}/session/quiet-power.sh poweroff || systemctl poweroff || loginctl poweroff`]);
     }
 
     function reboot() {
         closeAllWindows();
-        Quickshell.execDetached(["bash", "-c", `$HOME/.local/share/glass-boot/quiet-power.sh reboot || reboot || loginctl reboot`]);
+        Quickshell.execDetached(["bash", "-c", `${Directories.scriptPath}/session/quiet-power.sh reboot || reboot || loginctl reboot`]);
     }
 
     function rebootToFirmware() {
         closeAllWindows();
-        Quickshell.execDetached(["bash", "-c", `$HOME/.local/share/glass-boot/quiet-power.sh firmware || systemctl reboot --firmware-setup || loginctl reboot --firmware-setup`]);
+        Quickshell.execDetached(["bash", "-c", `${Directories.scriptPath}/session/quiet-power.sh firmware || systemctl reboot --firmware-setup || loginctl reboot --firmware-setup`]);
     }
 }

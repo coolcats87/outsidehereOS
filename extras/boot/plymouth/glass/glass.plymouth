@@ -1,8 +1,0 @@
-[Plymouth Theme]
-Name=Glass
-Description=Black screen, white logo, thin progress bar (Liquid Glass rice)
-ModuleName=script
-
-[script]
-ImageDir=/usr/share/plymouth/themes/glass
-ScriptFile=/usr/share/plymouth/themes/glass/glass.script

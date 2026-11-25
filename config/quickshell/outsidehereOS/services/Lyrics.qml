@@ -9,7 +9,7 @@ import Quickshell.Io
 
 /**
  * Time-synced lyrics for the active MPRIS track, from LRCLIB (https://lrclib.net).
- * Used by the dynamic island (modules/ii/island). Results are cached in ~/.cache/quickshell/lyrics.
+ * Used by the dynamic island (modules/shell/island). Results are cached in ~/.cache/quickshell/lyrics.
  */
 Singleton {
     id: root

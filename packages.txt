@@ -1,0 +1,79 @@
+# Packages install.sh installs. One per line; "#" starts a comment.
+# install.sh works out which come from the Arch repos and which from the AUR.
+# Already-installed packages (or ones something else already provides) are skipped.
+
+# ── Desktop ──────────────────────────────────────────────
+hyprland                      # the compositor (Lua config, 0.57+)
+hypridle                      # locks the screen / sleeps when idle
+hyprlock                      # fallback lock screen if the shell isn't running
+hyprpicker                    # colour picker (Super+Shift+C)
+hyprsunset                    # night light
+xdg-desktop-portal-hyprland   # screen sharing, file pickers
+xdg-desktop-portal-gtk
+quickshell                    # runs the shell (island, Spotlight, lock screen...)
+qt6-wayland
+qt6-svg
+qt6-imageformats              # webp/avif wallpapers and covers
+qt6-multimedia
+qt6-5compat
+qt6-positioning
+
+# ── Shell helpers ────────────────────────────────────────
+cliphist                      # clipboard history (Super+V)
+wl-clipboard                  # wl-copy / wl-paste
+wtype                         # types text into windows
+ydotool                       # pastes for you
+jq                            # reads/writes the settings JSON
+libqalculate                  # math in Spotlight (qalc)
+matugen                       # recolours apps from the wallpaper
+fuzzel                        # fallback pickers when the shell isn't running
+wlogout                       # fallback power menu
+xdg-utils
+xdg-user-dirs
+libnotify                     # notify-send
+gnome-keyring                 # stores passwords for apps
+libsecret
+polkit
+geoclue                       # location for the night-light schedule
+
+# ── Hardware ─────────────────────────────────────────────
+networkmanager                # Wi-Fi (nmcli)
+bluez
+bluez-utils
+upower                        # battery
+brightnessctl                 # laptop backlight
+ddcutil                       # external monitor brightness
+pipewire
+pipewire-pulse
+wireplumber                   # volume (wpctl)
+playerctl                     # media keys
+cava                          # audio visualiser
+
+# ── Screenshots & recording ──────────────────────────────
+grim
+slurp
+hyprshot
+swappy                        # annotate screenshots
+tesseract                     # text recognition (OCR)
+tesseract-data-eng
+wf-recorder                   # screen recording
+ffmpeg
+imagemagick
+python                        # region detection in the screenshot tool (venv made by install.sh)
+
+# ── Wallpapers ───────────────────────────────────────────
+mpvpaper                      # video wallpapers (AUR)
+
+# ── Fonts & themes ───────────────────────────────────────
+inter-font                    # UI font (closest open font to Apple's SF Pro)
+ttf-jetbrains-mono-nerd       # monospace
+noto-fonts
+noto-fonts-emoji
+ttf-material-symbols-variable-git   # icons (AUR)
+adw-gtk-theme                 # GTK apps follow the colours
+bibata-cursor-theme-bin       # cursor (AUR)
+
+# ── Apps the shortcuts open ──────────────────────────────
+kitty                         # terminal (Super+Enter)
+dolphin                       # files (Super+E)
+pavucontrol-qt                # sound settings

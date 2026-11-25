@@ -44,7 +44,9 @@ hl.bind("CTRL + SUPER + ALT + T", hl.dsp.global("quickshell:wallpaperSelectorRan
     { description = "Shell: Random wallpaper" })
 hl.bind("CTRL + SUPER + SHIFT + D", hl.dsp.global("quickshell:toggleLightDark"),
     { description = "Shell: Toggle light/dark mode" })
-hl.bind("CTRL + SUPER + R", hl.dsp.exec_cmd("killall ydotool qs quickshell; qs -c $qsConfig &"),
+-- Wait for the old instance to exit before starting: otherwise the new one can't register
+-- the notification server and polkit agent.
+hl.bind("CTRL + SUPER + R", hl.dsp.exec_cmd("bash -c 'qs kill -c $qsConfig; while pgrep -f \"^qs -c $qsConfig\" >/dev/null; do sleep 0.2; done; sleep 2; setsid -f qs -c $qsConfig'"),
     { description = "Shell: Restart widgets" })
 
 --##! Utilities

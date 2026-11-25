@@ -1,0 +1,5 @@
+-- GPU / machine environment variables. Leave empty unless you need them.
+-- Hybrid NVIDIA laptops, for example:
+-- hl.env("AQ_DRM_DEVICES", "/dev/dri/card1:/dev/dri/card0")  -- check /dev/dri/by-path first
+-- hl.env("LIBVA_DRIVER_NAME", "nvidia")
+-- hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
