@@ -2,19 +2,18 @@
 
 A Beautiful Custom Hyprland Shell based loosely out of end4 and follows the apple design language (for the most part).
 
-The shell is a [Quickshell](https://quickshell.org) config built around a dynamic island. It started as a fork of [end4's illogical-impulse](https://github.com/end-4/dots-hyprland); the end4 panels are gone. Licensed GPL-3.0, like end4.
+The shell is a [Quickshell](https://quickshell.org) config built completely around a dynamic island. It begun as a personal project,forking [end4's illogical-impulse](https://github.com/end-4/dots-hyprland). I've removed most of the cosmetic and functional code, just leaving and modifying some core components. 
 
-- [What you get](#what-you-get)
-- [Install](#install)
+- [Features](#features)
+- [Installation](#installation)
 - [Shortcuts](#shortcuts)
-- [Make it yours](#make-it-yours)
+- [Quick Modifying Guide](#quick-modifying-guide)
 - [Directory tree](#directory-tree)
-- [For developers](#for-developers)
 - [Uninstall](#uninstall)
 
 ---
 
-## What you get
+## Features
 
 | | |
 |---|---|
@@ -25,33 +24,25 @@ The shell is a [Quickshell](https://quickshell.org) config built around a dynami
 | **Wallpapers** | Ctrl+Super+T picks one. App colours follow the wallpaper (matugen). Video wallpapers work too. |
 | **Silent boot** *(optional)* | Boot splash → straight into Hyprland → the lock screen asks for your password. No login screen and no text, at boot or shutdown. |
 
-## Install
+## Installation
 
-You need **Arch Linux** or an Arch-based distro (EndeavourOS, CachyOS, Garuda…) and an internet connection.
-
+Tested on EndeavourOS, should work on other Arch distros.
+run:
 ```bash
 git clone https://github.com/coolcats87/outsidehereOS ~/.rices/outsidehereOS
 cd ~/.rices/outsidehereOS
 ./install.sh
 ```
-
-That's it. The installer explains each step, asks before anything big and is safe to run again. Run it as your normal user; it asks for your password when it needs `sudo`.
-
-**What `install.sh` does:**
-
+**What this does:**
 1. **Installs the packages** in [`packages.txt`](packages.txt), from the Arch repos and the AUR. If you have no AUR helper, it installs `yay` first. Packages you already have are skipped.
 2. **Backs up your current configs** (`~/.config/hypr`, `fuzzel`, `matugen`, …) to `~/.local/share/outsidehereOS/backups/<date>/`.
 3. **Links the configs** from this folder into `~/.config`. Because they're links, a `git pull` here updates your desktop.
-4. **Creates your machine settings** in `~/.rices/local/hypr/` (monitors, keyboard layout, touchpad). They're yours, and updates never touch them.
-5. **Sets up the rest:**
+4. **Creates your machine settings** in `~/.rices/local/hypr/` (monitors, keyboard layout, touchpad).
+5. **Sets up:**
    - a default wallpaper in `~/Pictures/Wallpapers`;
    - the dark GTK theme, the Inter font and the Bibata cursor;
    - Python for the screenshot tool;
    - the services the shell uses (Bluetooth, ydotool).
-6. **Asks** two questions, both defaulting to no:
-   - Add you to the `input` group? Only the keystroke overlay needs it.
-   - Set up the silent boot?
-
 Then log out and choose **Hyprland** on your login screen (or reboot, if you picked the silent boot).
 
 **Options:**
@@ -85,9 +76,9 @@ Press **Super+/** for the full, searchable list. The main ones:
 | **Super+Alt+J** | Cycle island style | | **Super+Alt+N** | Notifications: banner ↔ ticker |
 | **Ctrl+Alt+Delete** | Power menu | | **Ctrl+Super+R** | Restart the shell |
 
-## Make it yours
+## Quick Modifying Guide
 
-Everything is plain text. Edit a file, save it, and Hyprland reloads by itself. For shell (QML) changes, press **Ctrl+Super+R**.
+Working on a GUI for this. 
 
 | I want to… | Edit |
 |---|---|
@@ -198,37 +189,6 @@ outsidehereOS/
 └── state/                      Not in git: runtime data (Python venv, todo list, colours).
 ```
 
-## For developers
-
-**How it fits together.** `shell.qml` loads each module in `modules/shell/`. Modules get their data from singletons in `services/`, style themselves with `modules/common/Glass.qml` and are built from the `Glass*` widgets. Hyprland triggers the shell through global shortcuts (`hl.dsp.global("quickshell:<name>")`, matched by `GlobalShortcut { name: "<name>" }` in QML) or through IPC.
-
-**Run, restart, debug:**
-```bash
-qs -c outsidehereOS                        # run it in a terminal to see errors live
-qs kill -c outsidehereOS; qs -c outsidehereOS   # restart (or Ctrl+Super+R)
-qs log -c outsidehereOS                    # log of the running instance
-qs -c outsidehereOS ipc show               # every IPC target and function
-```
-
-**IPC.** Everything can be driven from a terminal or a keybind, which is handy for testing:
-```bash
-qs -c outsidehereOS ipc call islandLauncher toggle      # also: clipboard, emoji, query "text"
-qs -c outsidehereOS ipc call island cycleNotifStyle
-qs -c outsidehereOS ipc call wallpaperPicker random
-qs -c outsidehereOS ipc call appearance toggleDark
-```
-Targets: `appearance`, `audio`, `brightness`, `cheatsheet`, `island`, `islandLauncher`, `lock`, `lockPreview`, `mpris`, `overlay`, `polkit`, `region`, `session`, `wallpaperPicker`.
-
-**Adding a module:**
-1. Create `modules/shell/myThing/MyThing.qml`, with a `Scope` holding a `PanelWindow`.
-2. Style it with `Glass.*` tokens and `GlassSurface`.
-3. Add `import qs.modules.shell.myThing` and `Panel { component: MyThing {} }` to `shell.qml`.
-4. If it should blur what's behind it, name its layer `quickshell:island<Something>`. A Hyprland layer rule in `config/hypr/custom/rules.lua` already blurs those.
-
-**Settings.** Options live in `modules/common/Config.qml` as typed properties, saved to `~/.config/outsidehereOS/config.json`. Read them with `Config.options.<section>.<key>`.
-
-**Commits.** Generated files change whenever you set a wallpaper: `config/hypr/hyprland/colors.lua`, `config/hypr/hyprlock/colors.conf`, `config/fuzzel/fuzzel_theme.ini`, and the wallpaper path in `config.json`. Leave them out of commits unless you mean to change the defaults.
-
 ## Uninstall
 
 ```bash
@@ -243,3 +203,6 @@ This removes the links and puts your old configs back. Packages, wallpapers and 
 - [end-4/dots-hyprland](https://github.com/end-4/dots-hyprland) (illogical-impulse): the original shell this grew out of.
 - [Quickshell](https://quickshell.org) and [Hyprland](https://hyprland.org).
 - Design inspired by Apple's Liquid Glass. outsidehereOS isn't affiliated with Apple, and none of Apple's assets are used.
+
+
+Have fun!!
